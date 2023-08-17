@@ -13,38 +13,38 @@
     <body>
         <div class="wrapper">
             <nav class="navBar">
-                <div class="navTitleWrapper">
-                    <h2 class="navTitle">Categoria</h2>
+                <div class="navBar__titleWrapper">
+                    <h2 class="navBar__titleWrapper--title">Categoria</h2>
 
                     <button type="button" class="addButton">
                         <img src="./Icons/addButtonW.svg">
                     </button>
                 </div>
 
-                <ul class="navList">
+                <ul>
                     <li>
-                        <button class="category category--active">
-                            Categoria A <span class="category__counter category__counter--active" >1/4</span>
+                        <button class="navBar__category navBar__category--active">
+                            Ativada <span class="navBar__category__counter navBar__category__counter--active">1/4</span>
                         </button>
                     </li>
                     <li>
-                        <button class="category">
-                            Categoria A <span class="category__counter" >3/13</span>
+                        <button class="navBar__category">
+                            Desativada <span class="navBar__category__counter" >3/13</span>
                         </button>
                     </li>
                 </ul>
             </nav>
 
-            <div class="container">
-                <div class="titleWrapper">
-                    <h2 class="title">Tarefas de Casa</h2>
+            <div class="cardContainer">
+                <div class="cardContainer__titleWrapper">
+                    <h2 class="cardContainer__titleWrapper--title">Tarefas de Casa</h2>
 
                     <button type="button" class="addButton" data-add-button>
                         <img src="./Icons/addButtonP.svg">
                     </button>
                 </div>
 
-                <ul data-list class="cardList"></ul>
+                <ul data-list class="cardContainer__cardList"></ul>
             </div>
         </div>
         <script src="script.js"></script>        
