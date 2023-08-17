@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    list-style: none; 
+    border-style: none;
+  }
+  
+  /* ----------------------------------------------------------------------- */
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    align-items: center;
+    padding-top: 7.12rem;
+    flex-grow: 1;
+  }
+  
+  /* ---------------------------------CONTAINER----------------------------------- */
+  
+  .navBar {
+    background-color: #9381FF;   
+    width: 360px; 
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+  }
+  
+  .navTitleWrapper {  
+    gap: 24px;
+    padding: 43px 44px 61px 67px;
+    display: flex;
+    justify-content: center;  
+  }
+  
+  .navTitle {
+    color: #F8F7FF;
+    font-size: 36px;
+  }
+  
+  .navList {
+    font-size: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+  }
+
+  .wrapper {
+    display: flex;
+  }
+  
+  .category {
+    background-color:#9381FF; 
+    color: #ffff;
+    cursor: pointer;
+    font-weight: 700;
+    width: 300px;
+    height: 53px;
+    border-radius: 16px 0px 0px 16px;
+    gap: 10px;
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 44px;
+  
+    &--active {
+        background-color: #ffff; 
+        color: #9381FF;
+    } 
+    
+    &__counter {
+        background-color: #F8F7FF;
+        color: #9381FF;
+        padding: 2px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+
+        &--active {
+            background-color: #9381FF;
+            color: #F8F7FF;
+        }
+    }
+}
+  
+  
+  /* -------------------------------------------------------------------- */
+  
+  .titleWrapper {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .title {
+    color: #9381FF;
+    font-size: 2.625rem;
+  }
+  
+  .addButton {
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+  }
+  
+  /* -------------------------------------UL---------------------------------- */
+  .item {
+    list-style: none;
+  }
+  
+  .checkbox {
+    display: none;
+  }
+  
+  .cardList {
+    display: flex;
+    flex-direction: row;
+    max-height: 600px;
+    gap: 12px;
+    flex-wrap: wrap;
+    width: 924px;
+    justify-content: flex-start;
+  }
+  
+  .card::placeholder {
+    color: white;
+  }
+  
+  .card {
+    align-items: center;
+    background-color: #B8B8FF;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    gap: 8px;
+    max-width: 300px;
+    padding: 16px;
+  }
+  
+  .checkField {
+    align-items: center;
+    background-color: #F8F7FF;
+    border-radius: 4px;
+    display: flex;
+    height: 16px;
+    justify-content: center;
+    width: 16px;
+  }
+  
+  .image {
+    display: none;
+  }
+  
+  .deleteButton {
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+  }
+  
+  /* -------------------------------------COMBINED---------------------------------- */
+  .checkbox:checked + .card {
+    background-color: rgba(161, 161, 161, 0.67);
+    color: #50514F;
+    text-decoration: line-through;
+  }
+  
+  .checkbox:checked + .card .checkField {
+    background-color: #A1A1A1;
+  }
+  
+  .checkbox:checked + .card .image {
+    display: block;
+  }
+  
+  /* -------------------------------------NEW---------------------------------- */
+  .checkbox__text {
+    background-color: transparent;
+    flex-grow: 1;
+    border: 0;
+    outline: 0;
+    color: inherit;
+  }
+  
+  .checkbox__text:focus {
+    background-color: transparent;
+  }
+  
+  /*# sourceMappingURL=style.css.map */
+  
