@@ -1,3 +1,5 @@
+@import './variables';
+
 * {
     border-style: none;
     box-sizing: border-box;
@@ -11,87 +13,112 @@
     
   .navBar {
     align-items: flex-end;
-    background-color: #9381FF;   
+    background-color: $purple;   
     display: flex;
     flex-direction: column;
     height: 100vh;
-    width: 360px; 
+    width: 22.5rem; 
+    overflow-y: auto;
 
     &__titleWrapper {  
       display: flex;
-      gap: 24px;
+      gap: 1.5rem;
       justify-content: center;  
-      padding: 43px 44px 61px 67px;
+      padding: 2.6875rem 2.75rem 3.8125rem 4.1875rem;
 
       &--title {
-        color: #F8F7FF;
-        font-size: 36px;
+        color: $white;
+        font-size: 2.25rem;
       }
 
     }
 
     &__category {
       align-items: center;
-      background-color:#9381FF; 
-      border-radius: 16px 0px 0px 16px;
-      color: #ffff;
+      background-color: $purple; 
+      border-radius: 1rem 0rem 0rem 1rem;
+      color: $white;
       cursor: pointer;
       display: flex;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: 700;
-      gap: 10px;
-      height: 53px;
+      gap: 0.625rem;
+      height: 3.3125rem;
       justify-content: flex-start;
-      padding-left: 44px;
-      padding-right: 8px;
-      width: 300px;
+      padding-left: 2.75rem;
+      padding-right: 0.5rem;
+      position: relative;
+      width: 18.75rem;
     
       &--active {
-          background-color: #ffff; 
-          color: #9381FF;
+          background-color: $white; 
+          color: $purple;
+
+          &::before, &::after {
+            background-image: url(../Icons/roundedCorner.svg);
+            content: '';
+            height: 1rem;
+            position: absolute;
+            right: 0;
+            width: 1rem;            
+          }
+
+          &::before {
+            top: -1rem;
+          }
+
+          &::after {
+            bottom: -1rem;
+            transform: rotate(-90deg);
+            z-index: 1;            
+          }
+
+          .navBar__category__counter {
+            background-color: $purple;
+            color: $white;
+          }
       } 
       
       &__counter {
-          background-color: #F8F7FF;
-          border-radius: 4px;
-          color: #9381FF;
-          font-size: 12px;
-          padding: 2px 10px;
-    
-          &--active {
-              background-color: #9381FF;
-              color: #F8F7FF;
-          }
+          background-color: $white;
+          border-radius: 0.25rem;
+          color: $purple;
+          font-size: 0.75rem;
+          padding: 0.125rem 0.625rem;
       }
     }
 }
 
 .addButton {
     background-color: transparent;
-    border-style: none;
     cursor: pointer;
 }
 
 .wrapper {
     display: flex;
+    gap: 16px;
+    background-color: $white;
+    height: 100vh;
 }  
   
 /* -------------------------------------UL---------------------------------- */
   
 .cardContainer {
     align-items: center;
+    background-color: $white;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    gap: 48px;
+    gap: 3rem;
     padding-top: 7.12rem;
+    overflow-y: auto;
 
     &__titleWrapper {
         display: flex;
-        gap: 16px;
+        gap: 1rem;
 
         &--title {
-            color: #9381FF;
+            color: $purple;
             font-size: 2.625rem;
         }
         
@@ -99,43 +126,42 @@
 
     &__cardList {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: flex-start;
-        max-height: 600px;
-        width: 924px;
+        flex-direction: column;
+        gap: 0.75rem;
     }
 
 }
 
+// ------------------------------InnerHTML----------------------------------------------------------
+
 .item {
     list-style: none;
+}
+
+
+.card {
+    align-items: center;
+    background-color: $purple200;
+    border-radius: 0.75rem;
+    color: $white;
+    display: flex;
+    gap: 0.5rem;
+    max-width: 18.75rem;
+    padding: 1rem;
 }
 
 .checkbox {
     display: none;
 }
 
-.card {
-    align-items: center;
-    background-color: #B8B8FF;
-    border-radius: 12px;
-    color: white;
-    display: flex;
-    gap: 8px;
-    max-width: 300px;
-    padding: 16px;
-}
-
 .checkField {
     align-items: center;
-    background-color: #F8F7FF;
-    border-radius: 4px;
+    background-color: $white;
+    border-radius: 0.25rem;
     display: flex;
-    height: 16px;
+    height: 1rem;
     justify-content: center;
-    width: 16px;
+    width: 1rem;
 }
 
 .image {
@@ -154,12 +180,12 @@
 
 .checkbox:checked + .card {
     background-color: rgba(161, 161, 161, 0.67);
-    color: #50514F;
+    color: $grey-400;
     text-decoration: line-through;
 }
 
 .checkbox:checked + .card .checkField {
-    background-color: #A1A1A1;
+    background-color: $grey-200;
 }
 
 .checkbox:checked + .card .image {
@@ -177,7 +203,16 @@
 }
 
 .checkbox__text:focus {
-    background-color: transparent;
+    padding-left: 3px;
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.navInput {
+    background-color: transparent;
+    outline: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    width: 70%;
+    color: inherit;
+}

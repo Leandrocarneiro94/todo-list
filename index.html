@@ -16,28 +16,17 @@
                 <div class="navBar__titleWrapper">
                     <h2 class="navBar__titleWrapper--title">Categoria</h2>
 
-                    <button type="button" class="addButton">
+                    <button type="button" class="addButton" data-add-category>
                         <img src="./Icons/addButtonW.svg">
                     </button>
                 </div>
 
-                <ul>
-                    <li>
-                        <button class="navBar__category navBar__category--active">
-                            Ativada <span class="navBar__category__counter navBar__category__counter--active">1/4</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="navBar__category">
-                            Desativada <span class="navBar__category__counter" >3/13</span>
-                        </button>
-                    </li>
-                </ul>
+                <ul data-categories></ul>
             </nav>
 
             <div class="cardContainer">
                 <div class="cardContainer__titleWrapper">
-                    <h2 class="cardContainer__titleWrapper--title">Tarefas de Casa</h2>
+                    <h2 class="cardContainer__titleWrapper--title" data-category-title>Tarefas de Casa</h2>
 
                     <button type="button" class="addButton" data-add-button>
                         <img src="./Icons/addButtonP.svg">
