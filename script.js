@@ -18,7 +18,7 @@ const categories = [
     // },
 ]
 
-const createItemList = (id) => {
+const createItemList = (id, text='') => {
     const item = document.createElement('li')
     item.setAttribute('data-item', id)
     item.classList.add('item')
@@ -33,9 +33,23 @@ const createItemList = (id) => {
         <div class="checkField">
             <img class="image" src="./Icons/checkmark.png"/>
         </div>
-        <input class="checkbox__text" />
     `
 
+    const inputField = document.createElement('input')
+    inputField.classList.add('checkbox__text')
+    inputField.value = text
+
+    inputField.addEventListener('keyup', (e) => { 
+        const currentCategoryElement = document.querySelector('.navBar__category--active');
+        const currentCategoryId = Number(currentCategoryElement.dataset.id);
+        const currentCategory = categories.find((category) => category.id === currentCategoryId);
+        
+        const itemIndex = currentCategory.items.findIndex((item) => item.id === id);
+        currentCategory.items[itemIndex].item = e.target.value;
+    });
+
+    label.appendChild(inputField)
+    
     const deleteButton = document.createElement('button')
     deleteButton.classList.add('deleteButton')
     deleteButton.innerHTML = '<img src="./Icons/closeIcon.svg"/>'
@@ -51,15 +65,35 @@ const createItemList = (id) => {
 }
 
 button.addEventListener('click', () => {
+    const currentCategoryElement = document.querySelector('.navBar__category--active');
+    const currentCategory = categories.find((category) => category.id === Number(currentCategoryElement.dataset.id))
+    console.log(currentCategoryElement.dataset)
     const newId = list.childElementCount + 1
     const element = createItemList(newId)
     list.prepend(element)
-
+    
     const inputField = element.querySelector('.checkbox__text');
+    
+    currentCategory.items.push({
+      id: newId,
+      item: "",
+      checked: false,
+    })
+    
+    console.log(categories)
     inputField.focus();
-})
+  })
 
-// -------------------------------------------------------------------------------------------------------
+const loadCategoryItems = () => {
+    list.innerHTML=''
+    const currentCategoryElement = document.querySelector('.navBar__category--active');
+    const currentCategory = categories.find((category) => category.id === Number(currentCategoryElement.dataset.id))
+    currentCategory.items.forEach((item) => {
+        console.log('loadid', item.id)
+        const element = createItemList(item.id, item.item)
+        list.prepend(element)
+    })
+}
 
 const handleActiveCategory = (categoryElement, currentCategory) => {
     categoriesList.childNodes.forEach((categoryNode) => {
@@ -69,6 +103,7 @@ const handleActiveCategory = (categoryElement, currentCategory) => {
         }
     })
     categoryElement.querySelector('.navBar__category').classList.add('navBar__category--active')
+    loadCategoryItems()
 }
 
 const createCategoryElement = (element) => {
@@ -84,6 +119,7 @@ const createCategoryElement = (element) => {
     categoryElement.addEventListener('click', () => handleActiveCategory(categoryElement, currentCategory))
     
     const categoryButton = document.createElement('button')
+    categoryButton.setAttribute('data-id', currentCategory.id)
     categoryButton.innerHTML = `
         <span class="navBar__category__counter">1/4</span>
     `
@@ -110,9 +146,10 @@ const handleAddCategory = () => {
         items: []
     }
     categories.push(newCategory)
-    const  categoryElement = createCategoryElement(newCategory)
+    const categoryElement = createCategoryElement(newCategory)
     categoriesList.appendChild(categoryElement)
     console.log(newCategory)
+    console.log({categories})
 }
 
 buttonAddCategory.addEventListener('click', handleAddCategory)
