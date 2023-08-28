@@ -18,13 +18,26 @@ const categories = [
     // },
 ]
 
-const createItemList = (id, text='') => {
+const createItemList = (id, text = '', checked) => {
     const item = document.createElement('li')
     item.setAttribute('data-item', id)
     item.classList.add('item')
-    item.innerHTML = `
-        <input class="checkbox" type="checkbox" id="item-${id}"/>
-    `
+
+    const checkbox = document.createElement('input')
+    checkbox.classList.add('checkbox')
+    checkbox.setAttribute('type', 'checkbox')
+    checkbox.setAttribute('id', `item-${id}`)
+    if(checked){
+        checkbox.setAttribute('checked', true)
+    }
+    item.appendChild(checkbox)
+    checkbox.addEventListener('change', (e) => {
+        const currentCategoryElement = document.querySelector('.navBar__category--active');
+        const currentCategoryId = Number(currentCategoryElement.dataset.id);
+        const currentCategory = categories.find((category) => category.id === currentCategoryId);
+        const itemIndex = currentCategory.items.findIndex((item) => item.id === id);
+        currentCategory.items[itemIndex].checked = e.target.checked;
+    })
 
     const label = document.createElement('label')
     label.setAttribute('for', `item-${id}`)
@@ -90,7 +103,7 @@ const loadCategoryItems = () => {
     const currentCategory = categories.find((category) => category.id === Number(currentCategoryElement.dataset.id))
     currentCategory.items.forEach((item) => {
         console.log('loadid', item.id)
-        const element = createItemList(item.id, item.item)
+        const element = createItemList(item.id, item.item, item.checked)
         list.prepend(element)
     })
 }
